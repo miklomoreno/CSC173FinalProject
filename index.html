@@ -78,7 +78,7 @@ h1, h2, h3, h4, h5, h6 {
 
 
 <!DOCTYPE html>
-<meta charset="utf-8" />
+<meta charset="utf-8">
 <head>
   <h1>CSC 173: Assignment 3 | Interactive Design</h1>
   <h3>This barchart displays the Cereal Nutritional Information.</h3>
@@ -91,39 +91,9 @@ h1, h2, h3, h4, h5, h6 {
       fill: orange;
     }
 
-    .d3-tip {
-      line-height: 1;
-      font-weight: bold;
-      padding: 12px;
-      background: rgba(0, 0, 0, 0.8);
-      color: rgb(170, 41, 41);
-      border-radius: 2px;
-    }
-
-    /*Creates a small triangle extender for the tooltip*/
-    .d3-tip:after {
-      box-sizing: border-box;
-      display: inline;
-      font-size: 10px;
-      width: 100%;
-      line-height: 1;
-      color: rgba(0, 0, 0, 0.8);
-      content: "\25BC";
-      position: absolute;
-      text-align: center;
-    }
-
-    /*Style northward tooltips differently*/
-    .d3-tip.n:after {
-      margin: -1px 0 0 0;
-      top: 100%;
-      left: 0;
-    }
-
     .axis {
       font: 20px sans-serif;
     }
-    
 
     .axis path,
     .axis line {
@@ -138,7 +108,6 @@ h1, h2, h3, h4, h5, h6 {
     <p>You can click at the drop down menu to view different categories of nutrional information of the cereals.</p>
   <div id="drop"></div>
   <script src="https://d3js.org/d3.v3.min.js"></script>
-  <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
   <script>
     var margin = { top: 50, right: 40, bottom: 200, left: 100 },
       width = 1200 - margin.left - margin.right,
@@ -205,15 +174,6 @@ h1, h2, h3, h4, h5, h6 {
         .style("text-anchor", "middle")
         .text("Value");
         
-        
-        
-      var tip = d3
-        .tip()
-        .attr("class", "d3-tip")
-        .offset([-10, 0])
-        .html(function (d) {
-          return "<strong>Value:</strong> <span style='color:red'>" + d[selection] + " <strong>g</strong></span>";
-        });
 
       svg
         .append("g")
@@ -234,9 +194,8 @@ h1, h2, h3, h4, h5, h6 {
         .data(data)
         .enter()
         .append("rect")
-        .attr("class", "rectangle d3-tip")
+        .attr("class", "rectangle")
         .attr("width", x.rangeBand())
-
         .attr("height", function (d) {
           return height - y(+d[selection]);
         })
@@ -247,8 +206,7 @@ h1, h2, h3, h4, h5, h6 {
         .attr("y", function (d) {
           return y(+d[selection]);
         })
-        .on("mouseover", function(d) {
-        d3.select(this).style("cursor", "pointer")} )
+    
         .append("title")    
 		.text(function(d){
 			return d.State + " : " + d[selection];
@@ -289,7 +247,6 @@ h1, h2, h3, h4, h5, h6 {
 
           d3.selectAll("g.y.axis").transition().call(yAxis);
         });
-      svg.call(tip);
 
       selector
         .selectAll("option")
@@ -306,21 +263,4 @@ h1, h2, h3, h4, h5, h6 {
     
     });
   </script>
-  
 </body>
-
-#cereal.tsv
-Year	State	Calories	Protein	Fat	Sodium	Fiber	Carbo	Sugars	Potassium	Vitamins	Cups	Rating
-2012	100% Bran	70	4	1	130	10	5	6	280	25	0.33	68.40
-2012	Apple Jacks	110	2	0	125	1	11	14	30	25	1	33.17
-2012	Cheerios	110	6	2	290	2	17	1	105	25	1.25	50.76
-2012	Cocoa Puffs	110	1	1	180	0	12	13	55	25	1	22.73
-2012	Corn Flakes	100	2	0	290	1	21	2	35	25	1	45.86
-2012	Corn Pops	110	1	0	90	1	13	12	20	25	1	35.78
-2012	Froot Loops	110	2	1	125	1	11	13	30	25	1	1
-2012	Frosted Flakes	110	1	0	200	1	14	11	25	25	0.75	31.43
-2012	Fruity Pebbles	110	1	1	135	0	13	12	25	25	0.75	28.02
-2012	Honey Nut Cheerios	110	3	1	250	1.5	11.5	10	90	25	0.75	31.07
-2012	Raisin Bran	120	3	1	210	5	14	12	240	25	0.75	39.25
-2012	Rice Krispies	110	2	0	290	0	22	3	35	25	1	40.56
-2012	Special K	110	6	0	230	1	16	3	55	25	1	53.13
