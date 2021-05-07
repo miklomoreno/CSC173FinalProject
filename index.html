@@ -112,24 +112,23 @@ h1, h2, h3, h4, h5, h6 {
 
       var yAxis = d3.svg.axis().scale(y).orient("left");
 
-        
-        svg.append("text")      // text label for the x axis
-        .attr("x", 500 )
+         svg.append("text")      // text label for the x axis
+        .attr("x", 340 )
         .attr("y",  540 )
-        .style("font-size", "30px") 
+        .style("font-size", "40px") 
         .style("text-anchor", "middle")
         .text("Cereal name");
  
   // Add the text label for the Y axis
     svg.append("text")
         .attr("transform", "rotate(-90)")
-        .attr("y", 10 - margin.left)
-        .attr("x",0 - (height / 2))
-            .style("font-size", "30px") 
-
-        .attr("dy", "1em")
+        .attr("y", 38 - margin.left)
+        .attr("x",20 - (height / 2))
+        .style("font-size", "40px") 
+        .attr("dy", "0.3em")
         .style("text-anchor", "middle")
         .text("Value");
+
         
 
       svg
@@ -287,8 +286,8 @@ div.tooltip {
 <script>
 
 // Set the dimensions of the canvas / graph
-var margin = {top: 50, right: 100, bottom: 30, left: 150},
-    width = 1000 - margin.left - margin.right,
+var margin = {top: 50, right: 100, bottom: 60, left: 100},
+    width = 800 - margin.left - margin.right,
     height = 370 - margin.top - margin.bottom;
 
 // Parse the date / time
@@ -376,6 +375,27 @@ d3.csv("data.csv", function(error, data) {
     svg2.append("g")
         .attr("class", "y axis")
         .call(yAxis);
+    
+    
+    
+        svg2.append("text")      // text label for the x axis
+        .attr("x", 300 )
+        .attr("y",  320 )
+        .style("font-size", "30px") 
+        .style("text-anchor", "middle")
+        .text("Year");
+    
+    // Add the text label for the Y axis
+    svg2.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 48 - margin.left)
+        .attr("x",20 - (height / 2))
+        .style("font-size", "30px") 
+        .attr("dy", "0.3em")
+        .style("text-anchor", "middle")
+        .text("Revenue");
+
+    
 
 });
 
@@ -388,13 +408,14 @@ d3.csv("data.csv", function(error, data) {
      <!-- STATIC DESIGN -->
     <div class="w3-row w3-padding-64" id="about">
         <div class="w3-col m6 w3-padding-large w3-hide-small">
-            <img src="images/Cereal_Sales_2019.png" class="w3-round w3-image w3-opacity-min" alt="cereal aisle" width="1000" height="750">
+            <img src="images/Cereal_Sales_2019.png" alt="cereal aisle" width="auto" height="auto">
         </div>
-
         <div class="w3-col m6 w3-padding-large">
-            <h1 class="w3-center">Static Design</h1><br>
+            
+            <h1 class="w3-center">Static Design</h1>
             <p class="w3-large"> We chose to do cereal sales because...
-        </div>
+            </div>
+       
     </div>   
 
   <hr>
