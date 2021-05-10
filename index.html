@@ -23,7 +23,7 @@ h1, h2, h3, h4, h5, h6 {
 
 <!-- Header -->
 <header class="w3-display-container w3-content w3-wide" style="max-width:1100px;min-width:100px" id="home">
-  <img class="w3-image" src="images/5x4 cereals.png" alt="Cereals" width="1600" height="100">
+  <img class="w3-image" src="images/5x4 cereals.png" alt="Cereals" width="1600" height="100" >
   <div class="w3-display-bottomleft w3-padding-large w3-opacity">
   </div>
 </header>
@@ -32,7 +32,7 @@ h1, h2, h3, h4, h5, h6 {
 <div > 
 
   <!-- INTERACTIVE DESIGN 1-->
-  <div class="w3-row w3-padding-64" id="about">
+  <div style="margin-top: 100px" class="w3-row w3-padding-64" id="about">
         <div class="w3-col m6 w3-padding-large w3-hide-small">
       <style>
     .rectangle {
@@ -62,6 +62,10 @@ h1, h2, h3, h4, h5, h6 {
     <div id="area1"></div>
 
   <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script>
+    var d3v3 = window.d3;
+    window.d3 = null;
+</script>
   <script>
 
     var margin = { top: 50, right: 400, bottom: 200, left: 100 },
@@ -70,7 +74,7 @@ h1, h2, h3, h4, h5, h6 {
 
 
       
-    var svg = d3
+    var svg = d3v3
       .select("#area1")
       .append("svg")
       .attr("width", width + margin.left + margin.right)
@@ -78,7 +82,7 @@ h1, h2, h3, h4, h5, h6 {
       .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    d3.tsv("cereal.tsv", function (error, data) {
+    d3v3.tsv("cereal.tsv", function (error, data) {
       // filter year
       var data = data.filter(function (d) {
         return d.Year == "2012";
@@ -89,17 +93,17 @@ h1, h2, h3, h4, h5, h6 {
       });
       var selection = elements[0];
 
-      var y = d3.scale
+      var y = d3v3.scale
         .linear()
         .domain([
           0,
-          d3.max(data, function (d) {
+          d3v3.max(data, function (d) {
             return +d[selection];
           }),
         ])
         .range([height, 0]);
 
-      var x = d3.scale
+      var x = d3v3.scale
         .ordinal()
         .domain(
           data.map(function (d) {
@@ -108,13 +112,13 @@ h1, h2, h3, h4, h5, h6 {
         )
         .rangeBands([0, width], 0.1);
 
-      var xAxis = d3.svg.axis().scale(x).orient("bottom");
+      var xAxis = d3v3.svg.axis().scale(x).orient("bottom");
 
-      var yAxis = d3.svg.axis().scale(y).orient("left");
+      var yAxis = d3v3.svg.axis().scale(y).orient("left");
 
          svg.append("text")      // text label for the x axis
         .attr("x", 300 )
-        .attr("y",  460 )
+        .attr("y",  470 )
         .style("font-size", "30px") 
         .style("text-anchor", "middle")
         .text("Cereal name");
@@ -122,7 +126,7 @@ h1, h2, h3, h4, h5, h6 {
   // Add the text label for the Y axis
     svg.append("text")
         .attr("transform", "rotate(-90)")
-        .attr("y", 38 - margin.left)
+        .attr("y", 1 - margin.left)
         .attr("x",20 - (height / 2))
         .style("font-size", "30px") 
         .attr("dy", "0.3em")
@@ -168,7 +172,7 @@ h1, h2, h3, h4, h5, h6 {
 			return d.State + " : " + d[selection];
 		});
 
-      var selector = d3
+      var selector = d3v3
         .select("#drop")
         .append("select")
         .attr("id", "dropdown")
@@ -177,14 +181,14 @@ h1, h2, h3, h4, h5, h6 {
 
           y.domain([
             0,
-            d3.max(data, function (d) {
+            d3v3.max(data, function (d) {
               return +d[selection.value];
             }),
           ]);
 
           yAxis.scale(y);
 
-          d3.selectAll(".rectangle")
+          d3v3.selectAll(".rectangle")
             .transition()
             .attr("height", function (d) {
               return height - y(+d[selection.value]);
@@ -201,7 +205,7 @@ h1, h2, h3, h4, h5, h6 {
               return d.State + " : " + d[selection.value];
             });
 
-          d3.selectAll("g.y.axis").transition().call(yAxis);
+          d3v3.selectAll("g.y.axis").transition().call(yAxis);
         });
 
       selector
@@ -224,7 +228,7 @@ h1, h2, h3, h4, h5, h6 {
 
         </div>
 
-        <div class="w3-col m6 w3-padding-large">
+        <div style="margin-top: 100px" class="w3-col m6 w3-padding-large">
             <h1 class="w3-center">Interactive Design 1</h1><br>
             <p class="w3-large">The Catering was founded in blabla by Mr. Smith in lorem ipsum dolor sit amet, consectetur adipiscing elit consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute iruredolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.We only use ingredients.
         </div>
@@ -233,7 +237,8 @@ h1, h2, h3, h4, h5, h6 {
 
   <!-- INTERACTIVE DESIGN 2-->
   <div>
-        <div class="w3-col m6 w3-padding-large">
+        <div class="w3-col m6 w3-padding-large" style="margin-top: 100px">
+            
             <h1 class="w3-center">Interactive Design 2</h1><br>
             <p class="w3-large">The Catering was founded in blabla by Mr. Smith in lorem ipsum dolor sit amet, consectetur adipiscing elit consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute iruredolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.We only use ingredients.
         </div>
@@ -280,47 +285,45 @@ div.tooltip {
 <body>
 <div id="area2"></div>
 
-<!-- load the d3.js library -->    
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
 
 <script>
 
 // Set the dimensions of the canvas / graph
-var margin = {top: 50, right: 100, bottom: 60, left: 100},
+var margin = {top: 50, right: 100, bottom: 90, left: 100},
     width = 800 - margin.left - margin.right,
-    height = 370 - margin.top - margin.bottom;
+    height = 430 - margin.top - margin.bottom;
 
 // Parse the date / time
-var parseDate = d3.time.format("%Y").parse;
-var formatTime = d3.time.format("%Y");
+var parseDate = d3v3.time.format("%Y").parse;
+var formatTime = d3v3.time.format("%Y");
 
 // Set the ranges
-var x = d3.time.scale().range([0, width]);
-var y = d3.scale.linear().range([height, 0]);
+var x = d3v3.time.scale().range([0, width]);
+var y = d3v3.scale.linear().range([height, 0]);
 
     
     
 // Define the axes
-var xAxis = d3.svg.axis().scale(x)
+var xAxis = d3v3.svg.axis().scale(x)
     .orient("bottom").ticks(13);
 
-var yAxis = d3.svg.axis().scale(y)
+var yAxis = d3v3.svg.axis().scale(y)
     .orient("left").ticks(5);
 
    
     
 // Define the line
-var valueline = d3.svg.line()
+var valueline = d3v3.svg.line()
     .x(function(d) { return x(d.date); })
     .y(function(d) { return y(d.close); });
 
 // Define the div for the tooltip
-var div = d3.select("body").append("div")	
+var div = d3v3.select("body").append("div")	
     .attr("class", "tooltip")				
     .style("opacity", 0);
 
 // Adds the svg canvas
-var svg2 = d3.select("#area2")
+var svg2 = d3v3.select("#area2")
     .append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
@@ -329,15 +332,15 @@ var svg2 = d3.select("#area2")
               "translate(" + margin.left + "," + margin.top + ")");
 
 // Get the data
-d3.csv("data.csv", function(error, data) {
+d3v3.csv("data.csv", function(error, data) {
     data.forEach(function(d) {
         d.date = parseDate(d.date);
         d.close = +d.close;
     });
 
     // Scale the range of the data
-    x.domain(d3.extent(data, function(d) { return d.date; }));
-    y.domain([0, d3.max(data, function(d) { return d.close; })]);
+    x.domain(d3v3.extent(data, function(d) { return d.date; }));
+    y.domain([0, d3v3.max(data, function(d) { return d.close; })]);
 
     // Add the valueline path.
     svg2.append("path")
@@ -356,8 +359,8 @@ d3.csv("data.csv", function(error, data) {
                 .duration(200)		
                 .style("opacity", .9);		
             div	.html("Year: " + formatTime(d.date) + "<br/>"  + "Rev: " + d.close)	
-                .style("left", (d3.event.pageX) + "px")		
-                .style("top", (d3.event.pageY - 28) + "px");	
+                .style("left", (d3v3.event.pageX) + "px")		
+                .style("top", (d3v3.event.pageY - 28) + "px");	
             })					
         .on("mouseout", function(d) {		
             div.transition()		
@@ -380,7 +383,7 @@ d3.csv("data.csv", function(error, data) {
     // Add the text label for the X axis
     svg2.append("text") 
         .attr("x", 300 )
-        .attr("y",  320 )
+        .attr("y",  340 )
         .style("font-size", "26px") 
         .style("text-anchor", "middle")
         .text("Year");
@@ -388,7 +391,7 @@ d3.csv("data.csv", function(error, data) {
     // Add the text label for the Y axis
     svg2.append("text")
         .attr("transform", "rotate(-90)")
-        .attr("y", 48 - margin.left)
+        .attr("y", 10 - margin.left)
         .attr("x",20 - (height / 2))
         .style("font-size", "26px") 
         .attr("dy", "0.3em")
@@ -408,11 +411,8 @@ d3.csv("data.csv", function(error, data) {
       
       
       
-      
-           <!-- Interactive design 3 -->
-
-      
-      <!DOCTYPE html>
+     <!-- interaction 3 -->
+  <div style="margin-top: 100px" class="w3-row w3-padding-64" id="about">      
 <meta charset="utf-8">
 <h1>Brushing & Zooming Stacked Area Chart</h1>
 <h2>US population: Most eaten types of breakfast cereals from 2011 to 2020</h2>
@@ -431,7 +431,7 @@ d3.csv("data.csv", function(error, data) {
 
 // set the dimensions and margins of the graph
 var margin = {top: 60, right: 230, bottom: 50, left: 50},
-    width = 660 - margin.left - margin.right,
+    width = 860 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
@@ -628,6 +628,10 @@ d3.csv("types.csv", function(data) {
 })
 </script>
       
+      </div>   
+      
+      
+      
       
       
       
@@ -643,7 +647,7 @@ d3.csv("types.csv", function(data) {
       
       
      <!-- STATIC DESIGN -->
-    <div class="w3-row w3-padding-64" id="about">
+    <div class="w3-row w3-padding-64" id="about" style="margin-top: 100px">
         <div class="w3-col m6 w3-padding-large w3-hide-small">
             <img src="images/Cereal_Sales_2019.png" alt="cereal aisle" width="auto" height="auto">
         </div>
@@ -657,8 +661,7 @@ d3.csv("types.csv", function(data) {
 
   <hr>
 
-</body>
-</html>
+
 
 
 
