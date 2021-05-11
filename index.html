@@ -21,7 +21,7 @@ h1, h2, h3, h4, h5, h6 {
 
 
 <!-- Header -->
-<header class="w3-display-container w3-content w3-wide" style="max-width:1100px;min-width:100px" id="home">
+<header class="w3-display-container w3-content w3-wide w3-center" style="max-width:1100px;min-width:100px" id="home">
   <img class="w3-image" src="images/5x4 cereals.png" alt="Cereals" width="1600" height="100" >
 </header>
 <div style = "padding:50px">
@@ -40,8 +40,8 @@ h1, h2, h3, h4, h5, h6 {
 <div > 
 
   <!-- INTERACTIVE DESIGN 1-->
-  <div style="margin-top: 100px" class="w3-row w3-padding-64" id="about">
-        <div class="w3-col m6 w3-padding-large w3-hide-small">
+  <div style="margin-top: 100px" class="w3-center" id="about">
+        <div class="w3-center">
       <style>
     .rectangle {
       fill: steelblue;
@@ -60,11 +60,29 @@ h1, h2, h3, h4, h5, h6 {
       stroke: #000;
       shape-rendering: crispEdges;
     }
+    .centertext{
+       margin-left: auto;
+       margin-right: auto;
+       width: 50em;
+       border:5px solid rgb(182, 182, 179);
+      padding:20px;
+       border-radius: 20px;
+    }
+    #area1, #area2, #area3, #area4, #my_dataviz{
+        margin-left: auto;
+       margin-right: auto;
+       width: 50em;
+       }
   </style>
 </head>
 <body>
   
-    <p>You can click at the drop down menu to view different categories of nutrional information of the cereals.</p>
+        <div style="margin-top: 50px" class="w3-center">
+            <h1 class="w3-center">Interactive Design 1</h1><br>
+            <p class="w3-center centertext"> In our modern society we have become very health conscious. When it comes to cereal some people can even argue that it is not breakfast anymore and that it is more of a dessert due to amount of sugar in one bowl. For our first interaction it gives you the ability to compare the nutritional values of 10+ cereals ranging from calories count all the way to vitamin intake. How does one of the first modern day cereal(Cornflakes) compare to everything else?
+             <p><strong>You can click at the drop down menu to view different categories of nutrional information of the cereals.</strong></p>
+            </div>
+   
   <div id="drop"></div>
 
     <div id="area1"></div>
@@ -236,28 +254,21 @@ h1, h2, h3, h4, h5, h6 {
 
         </div>
 
-        <div style="margin-top: 100px" class="w3-col m6 w3-padding-large">
-            <h1 class="w3-center">Interactive Design 1</h1><br>
-            <p class="w3-large"> In our modern society we have become very health conscious. When it comes to cereal some people can even argue that it is not breakfast anymore and that it is more of a dessert due to amount of sugar in one bowl. For our first interaction it gives you the ability to compare the nutritional values of 10+ cereals ranging from calories count all the way to vitamin intake. How does one of the first modern day cereal(Cornflakes) compare to everything else?
-        </div>
 	  
   </div>
 
   <!-- INTERACTIVE DESIGN 2-->
   <div>
-        <div class="w3-col m6 w3-padding-large" style="margin-top: 100px">
-            
-           
-            <p class="w3-large"> This statistic shows the revenue of the industry “breakfast cereal manufacturing“ in the U.S. from 2012 to 2017, with a forecast to 2024. It is projected that the revenue of breakfast cereal manufacturing in the U.S. will amount to approximately 10,3 billion U.S. Dollars by 2024.
+        <div class="w3-center" style="margin-top: 100px">
+            <h1 class="w3-center">Interactive Design 2</h1><br>
+             <h3 class="w3-center">Industry revenue of “breakfast cereal manufacturing“ in the U.S. 2012-2024</h3>
+            <p class="centertext"> This statistic shows the revenue of the industry “breakfast cereal manufacturing“ in the U.S. from 2012 to 2017, with a forecast to 2024. It is projected that the revenue of breakfast cereal manufacturing in the U.S. will amount to approximately 10,3 billion U.S. Dollars by 2024.
         </div>
 <meta charset="utf-8">
-  <h1>Industry revenue of “breakfast cereal manufacturing“ in the U.S. 2012-2024
- </h1>
-<h3>
+ 
 
-     <h1 class="w3-center">Interactive Design 2</h1><br>
-    The Catering was founded in blabla by Mr. Smith in lorem ipsum dolor sit amet, consectetur adipiscing elit consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute iruredolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.We only use ingredients.
-</h3>
+
+     
 <style> /* set the CSS */
 
 body { font: 15px Arial;}
@@ -422,11 +433,12 @@ d3v3.csv("data.csv", function(error, data) {
       
       
      <!-- interaction 3 -->
-  <div style="margin-top: 100px" class="w3-row w3-padding-64" id="about">      
+  <div style="margin-top: 100px" class="w3-center" id="about">      
 <meta charset="utf-8">
-<h1>Brushing & Zooming Stacked Area Chart</h1>
-<h2>US population: Most eaten types of breakfast cereals from 2011 to 2020</h2>
-<h3>Interactive 3</h3>
+<h1>Interactive 3</h1><br>
+<h3>Brushing & Zooming Stacked Area Chart</h3>
+<h3>US population: Most eaten types of breakfast cereals from 2011 to 2020</h3>
+<p class="centertext">Description of Interaction 3....</p>
 
 
 <!-- Load d3.js & color scale-->
@@ -658,14 +670,17 @@ d3.csv("types.csv", function(data) {
       
      <!-- STATIC DESIGN -->
     <div class="w3-row w3-padding-64" id="about" style="margin-top: 100px">
-        <div class="w3-col m6 w3-padding-large w3-hide-small">
+       <div class="w3-center" style = "margin-top: 20px">
+            
+            <h1 class="w3-center">Static Design</h1><br>
+            <p class="w3-center centertext"> We chose to do cereal sales because...
+            </div>
+            <br>
+        <div class="w3-center w3-hide-small">
+          
             <img src="images/Cereal_Sales_2019.png" alt="cereal aisle" width="auto" height="auto">
         </div>
-        <div class="w3-col m6 w3-padding-large" style = "margin-top: 300px">
-            
-            <h1 class="w3-center">Static Design</h1>
-            <p class="w3-large" style="float: right; margin-right: 260px;"> We chose to do cereal sales because...
-            </div>
+       
        
     </div>   
 
