@@ -94,9 +94,10 @@ h1, h2, h3, h4, h5, h6 {
 </script>
   <script>
 
-    var margin = { top: 50, right: 400, bottom: 200, left: 100 },
+     var margin = { top: 50, right: 400, bottom: 200, left: 100 },
       width = 1200 - margin.left - margin.right,
-      height = 610 - margin.top - margin.bottom;
+      height = 710 - margin.top - margin.bottom;
+
 
 
       
@@ -309,10 +310,7 @@ div.tooltip {
 
 <script>
 
-// Set the dimensions of the canvas / graph
-var margin = {top: 50, right: 100, bottom: 90, left: 100},
-    width = 800 - margin.left - margin.right,
-    height = 430 - margin.top - margin.bottom;
+
 
 // Parse the date / time
 var parseDate = d3v3.time.format("%Y").parse;
@@ -443,6 +441,10 @@ d3v3.csv("data.csv", function(error, data) {
 
 <!-- Load d3.js & color scale-->
 <script src="https://d3js.org/d3.v4.js"></script>
+               <script>
+    var d3v4 = window.d3;
+</script>
+
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 
 <!-- Create a div where the graph will take place -->
@@ -451,13 +453,10 @@ d3v3.csv("data.csv", function(error, data) {
 
 <script>
 
-// set the dimensions and margins of the graph
-var margin = {top: 60, right: 230, bottom: 50, left: 50},
-    width = 860 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+
 
 // append the svg object to the body of the page
-var svg3 = d3.select("#my_dataviz")
+var svg3 = d3v4.select("#my_dataviz")
   .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -466,7 +465,7 @@ var svg3 = d3.select("#my_dataviz")
           "translate(" + margin.left + "," + margin.top + ")");
 
 // Parse the Data
-d3.csv("types.csv", function(data) {
+d3v4.csv("types.csv", function(data) {
 
 
   //////////
@@ -477,12 +476,12 @@ d3.csv("types.csv", function(data) {
   var keys = data.columns.slice(1)
 
   // color palette
-  var color = d3.scaleOrdinal()
+  var color = d3v4.scaleOrdinal()
     .domain(keys)
-    .range(d3.schemeSet2);
+    .range(d3v4.schemeSet2);
 
   //stack the data?
-  var stackedData = d3.stack()
+  var stackedData = d3v4.stack()
     .keys(keys)
     (data)
 
@@ -493,12 +492,12 @@ d3.csv("types.csv", function(data) {
   //////////
 
   // Add X axis
-  var x = d3.scaleLinear()
-    .domain(d3.extent(data, function(d) { return d.year; }))
+  var x = d3v4.scaleLinear()
+    .domain(d3v4.extent(data, function(d) { return d.year; }))
     .range([ 0, width ]);
   var xAxis = svg3.append("g")
     .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x).ticks(5))
+    .call(d3v4.axisBottom(x).ticks(5))
 
   // Add X axis label:
   svg3.append("text")
@@ -516,11 +515,11 @@ d3.csv("types.csv", function(data) {
       .attr("text-anchor", "start")
 
   // Add Y axis
-  var y = d3.scaleLinear()
+  var y = d3v4.scaleLinear()
     .domain([0, 800])
     .range([ height, 0 ]);
   svg3.append("g")
-    .call(d3.axisLeft(y).ticks(5))
+    .call(d3v4.axisLeft(y).ticks(5))
 
 
 
@@ -538,7 +537,7 @@ d3.csv("types.csv", function(data) {
       .attr("y", 0);
 
   // Add brushing
-  var brush = d3.brushX()                 // Add the brush feature using the d3.brush function
+  var brush = d3v4.brushX()                 // Add the brush feature using the d3.brush function
       .extent( [ [0,0], [width,height] ] ) // initialise the brush area: start at 0,0 and finishes at width,height: it means I select the whole graph area
       .on("end", updateChart) // Each time the brush selection changes, trigger the 'updateChart' function
 
@@ -547,7 +546,7 @@ d3.csv("types.csv", function(data) {
     .attr("clip-path", "url(#clip)")
 
   // Area generator
-  var area = d3.area()
+  var area = d3v4.area()
     .x(function(d) { return x(d.data.year); })
     .y0(function(d) { return y(d[0]); })
     .y1(function(d) { return y(d[1]); })
@@ -574,19 +573,19 @@ d3.csv("types.csv", function(data) {
   // A function that update the chart for given boundaries
   function updateChart() {
 
-    extent = d3.event.selection
+    extent = d3v4.event.selection
 
     // If no selection, back to initial coordinate. Otherwise, update X axis domain
     if(!extent){
       if (!idleTimeout) return idleTimeout = setTimeout(idled, 350); // This allows to wait a little bit
-      x.domain(d3.extent(data, function(d) { return d.year; }))
+      x.domain(d3v4.extent(data, function(d) { return d.year; }))
     }else{
       x.domain([ x.invert(extent[0]), x.invert(extent[1]) ])
       areaChart.select(".brush").call(brush.move, null) // This remove the grey brush area as soon as the selection has been done
     }
 
     // Update axis and area position
-    xAxis.transition().duration(1000).call(d3.axisBottom(x).ticks(5))
+    xAxis.transition().duration(1000).call(d3v4.axisBottom(x).ticks(5))
     areaChart
       .selectAll("path")
       .transition().duration(1000)
@@ -603,14 +602,14 @@ d3.csv("types.csv", function(data) {
     var highlight = function(d){
       console.log(d)
       // reduce opacity of all groups
-      d3.selectAll(".myArea").style("opacity", .1)
+      d3v4.selectAll(".myArea").style("opacity", .1)
       // expect the one that is hovered
-      d3.select("."+d).style("opacity", 1)
+      d3v4.select("."+d).style("opacity", 1)
     }
 
     // And when it is not hovered anymore
     var noHighlight = function(d){
-      d3.selectAll(".myArea").style("opacity", 1)
+      d3v4.selectAll(".myArea").style("opacity", 1)
     }
 
 
@@ -651,6 +650,167 @@ d3.csv("types.csv", function(data) {
 </script>
       
       </div>   
+      
+      
+      
+      
+                <!-- interaction 4 -->
+  <div style="margin-top: 100px" class="w3-center" id="about">      
+<h1>Interactive 4</h1><br>
+<h3>Bubble Packing</h3>
+<h3>Brands of breakfast cereal (cold) consumed in the U.S. 2020
+ most often in the last 7 days</h3>
+      <meta charset="utf-8">
+
+<!-- Color palette -->
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+
+<!-- Create a div where the graph will take place -->
+<div id="area4"></div>
+
+<style>
+.node:hover{
+  stroke-width: 7px !important;
+  opacity: 1 !important;
+}
+</style>
+
+<script>
+
+
+
+// append the svg object to the body of the page
+var svg4 = d3v4.select("#area4")
+  .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+
+// Read data
+d3v4.csv("bubble.csv", function(data) {
+
+  // Filter a bit the data -> more than 1 million inhabitants
+  data = data.filter(function(d){ return d.value>1 })
+
+  // Color palette for continents?
+  var color = d3v4.scaleOrdinal()
+    .domain(["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q"])
+    .range(d3v4.schemeSet1);
+
+  // Size scale for countries
+  var size = d3v4.scaleLinear()
+    .domain([0, 70])
+    .range([20,85])  // circle will be between 7 and 55 px wide
+
+  // create a tooltip
+  var Tooltip = d3v4.select("#area4")
+    .append("div")
+    .style("opacity", 0)
+    .attr("class", "tooltip")
+    .style("background-color", "white")
+    .style("border", "solid")
+    .style("border-width", "2px")
+    .style("border-radius", "5px")
+    .style("padding", "auto")
+    .style("height", "auto")
+  // Three function that change the tooltip when user hover / move / leave a cell
+  var mouseover = function(d) {
+    Tooltip
+      .style("opacity", 1)
+  }
+  var mousemove = function(d) {
+    Tooltip
+      .html('<u>' + d.key + '</u>' + "<br>" + d.value + " million people")
+      .style("left", (d3v4.event.pageX) + "px")
+      .style("top", (d3v4.event.pageY+38) + "px")
+  }
+  var mouseleave = function(d) {
+    Tooltip
+      .style("opacity", 0)
+  }
+
+  // Initialize the circle: all located at the center of the svg area
+  var node = svg4.append("g")
+    .selectAll("circle")
+    .data(data)
+    .enter()
+    .append("circle")
+      .attr("class", "node")
+      .attr("r", function(d){ return size(d.value)})
+      .attr("cx", width / 2)
+      .attr("cy", height / 2)
+      .style("fill", function(d){ return color(d.region)})
+      .style("fill-opacity", 0.8)
+      .attr("stroke", "black")
+      .style("stroke-width", 1)
+      .on("mouseover", mouseover) // What to do when hovered
+      .on("mousemove", mousemove)
+      .on("mouseleave", mouseleave)
+      .call(d3v4.drag() // call specific function when circle is dragged
+           .on("start", dragstarted)
+           .on("drag", dragged)
+           .on("end", dragended));
+
+  // Features of the forces applied to the nodes:
+  var simulation = d3v4.forceSimulation()
+      .force("center", d3v4.forceCenter().x(width / 2).y(height / 2)) // Attraction to the center of the svg area
+      .force("charge", d3v4.forceManyBody().strength(.1)) // Nodes are attracted one each other of value is > 0
+      .force("collide", d3v4.forceCollide().strength(.2).radius(function(d){ return (size(d.value)+3) }).iterations(1)) // Force that avoids circle overlapping
+
+  // Apply these forces to the nodes and update their positions.
+  // Once the force algorithm is happy with positions ('alpha' value is low enough), simulations will stop.
+  simulation
+      .nodes(data)
+      .on("tick", function(d){
+        node
+            .attr("cx", function(d){ return d.x; })
+            .attr("cy", function(d){ return d.y; })
+      });
+
+  // What happens when a circle is dragged?
+  function dragstarted(d) {
+    if (!d3v4.event.active) simulation.alphaTarget(.03).restart();
+    d.fx = d.x;
+    d.fy = d.y;
+  }
+  function dragged(d) {
+    d.fx = d3v4.event.x;
+    d.fy = d3v4.event.y;
+  }
+  function dragended(d) {
+    if (!d3v4.event.active) simulation.alphaTarget(.03);
+    d.fx = null;
+    d.fy = null;
+  }
+
+})
+
+</script>
+      
+      
+      
+      
+
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       
      <!-- STATIC DESIGN -->
     <div class="w3-row w3-padding-64" id="about" style="margin-top: 100px">
