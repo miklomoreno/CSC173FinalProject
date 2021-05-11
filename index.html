@@ -94,9 +94,9 @@ h1, h2, h3, h4, h5, h6 {
 </script>
   <script>
 
-     var margin = { top: 50, right: 400, bottom: 200, left: 100 },
-      width = 1200 - margin.left - margin.right,
-      height = 710 - margin.top - margin.bottom;
+     var margin = { top: 40, right: 30, bottom: 130, left: 100 },
+      width = 700 - margin.left - margin.right,
+      height = 350;
 
 
 
@@ -693,13 +693,13 @@ d3v4.csv("bubble.csv", function(data) {
 
   // Color palette for continents?
   var color = d3v4.scaleOrdinal()
-    .domain(["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q"])
-    .range(d3v4.schemeSet1);
+    .domain(["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "x", "y", "z"])
+    .range(d3v4.schemeCategory20)
 
   // Size scale for countries
   var size = d3v4.scaleLinear()
     .domain([0, 70])
-    .range([20,85])  // circle will be between 7 and 55 px wide
+    .range([10,65])  // circle will be between 7 and 55 px wide
 
   // create a tooltip
   var Tooltip = d3v4.select("#area4")

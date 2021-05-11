@@ -1,19 +1,30 @@
 "region";"key";"value"
-"a";"Cheerios (regular)";63.02
-"b";"Honey Nut Cheerios";59.99
+"r";"Cheerios (regular)";63.02
+"s";"Honey Nut Cheerios";59.99
 "k";"Kellog's Frosted flakes (regular)";41.31
 "k";"Kellog's Corn pops";6.04
 "e";"Honey Nut Chex";5.49
-"p";"Post Fruity Pebbles";7.49
+"b";"Post Fruity Pebbles";7.49
 "k";"Kellog's Rice Krispies Treats";6.99
 "h";"Apple Cinnamon Cheerios";8.89
 "k";"Kellog's Special K (Regular)";10.6
-"p";"Post Cocoa Pebbles";8.5
-"p";"Post Honey Bunches Of Oats";14.52
+"b";"Post Cocoa Pebbles";8.5
+"b";"Post Honey Bunches Of Oats";14.52
 "k";"Kellog's Raisin Bran (Regular)";11.25
 "m";"Apple Jacks";10.76
-"p";"Post Cocoa Puffs";16.25
+"b";"Post Cocoa Puffs";16.25
 "k";"Kellog's Corn Flakes";30.51
-"p";"Cap'n Crunch (regular)";18.07
+"u";"Cap'n Crunch (regular)";18.07
 "q";"Store Brand";25.9
+"c";"Cinnamon Toast Crunch";31.2
+"d";"Raisin nut bran";20.06
+"f";"Reese's Puff's";8.75
+"v";"Cookie crip";6.33
+"y";"Quaker Cinnamon Life";6.59
+"x";"Fiber one";6.3
+
+
+
+
+
 
