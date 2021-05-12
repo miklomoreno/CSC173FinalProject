@@ -94,7 +94,7 @@ h1, h2, h3, h4, h5, h6 {
 </script>
   <script>
 
-     var margin = { top: 40, right: 30, bottom: 130, left: 100 },
+     var margin = { top: 40, right: 30, bottom: 200, left: 100 },
       width = 700 - margin.left - margin.right,
       height = 350;
 
@@ -145,7 +145,7 @@ h1, h2, h3, h4, h5, h6 {
 
          svg.append("text")      // text label for the x axis
         .attr("x", 300 )
-        .attr("y",  470 )
+        .attr("y",  540 )
         .style("font-size", "30px") 
         .style("text-anchor", "middle")
         .text("Cereal name");
@@ -153,8 +153,8 @@ h1, h2, h3, h4, h5, h6 {
   // Add the text label for the Y axis
     svg.append("text")
         .attr("transform", "rotate(-90)")
-        .attr("y", 1 - margin.left)
-        .attr("x",20 - (height / 2))
+        .attr("y", 35 - margin.left)
+        .attr("x",10 - (height / 2))
         .style("font-size", "30px") 
         .attr("dy", "0.3em")
         .style("text-anchor", "middle")
@@ -232,7 +232,7 @@ h1, h2, h3, h4, h5, h6 {
               return d.State + " : " + d[selection.value];
             });
 
-          d3v3.selectAll("g.y.axis").transition().call(yAxis);
+          d3v3.select("g.y.axis").transition().call(yAxis);
         });
 
       selector
@@ -402,7 +402,7 @@ d3v3.csv("data.csv", function(error, data) {
     // Add the text label for the X axis
     svg2.append("text") 
         .attr("x", 300 )
-        .attr("y",  340 )
+        .attr("y",  410 )
         .style("font-size", "26px") 
         .style("text-anchor", "middle")
         .text("Year");
@@ -410,12 +410,12 @@ d3v3.csv("data.csv", function(error, data) {
     // Add the text label for the Y axis
     svg2.append("text")
         .attr("transform", "rotate(-90)")
-        .attr("y", 10 - margin.left)
-        .attr("x",20 - (height / 2))
+        .attr("y", 45 - margin.left)
+        .attr("x",30 - (height / 2))
         .style("font-size", "26px") 
         .attr("dy", "0.3em")
         .style("text-anchor", "middle")
-        .text("Revenue");
+        .text("Revenue (in millions)");
 
     
 
@@ -435,9 +435,10 @@ d3v3.csv("data.csv", function(error, data) {
 <meta charset="utf-8">
 <h1>Interactive Design 3</h1><br>
 <h3>Brushing & Zooming Stacked Area Chart</h3>
-<h3>US population: Most eaten types of breakfast cereals from 2011 to 2020</h3>
+<h3>US population: Most eaten types of breakfast cereals from 2003 to 2020</h3>
 <p class="centertext">In the graph shown you are able to see the total amount of cereal consumed in the US. There are several types of cereals out there, including all natural, regular, and pre-sweetened. In the early days cereals were only created using grains, wheat, corn etc. with little to no extras. Popularity in cereals didn't explode until manufactures started adding sugar to most. As seen in the graph below pre-sweetened cereal accounts for more than half of the total consumed cereal total. Did you know that more than 80% of US citizens eat cereal!</p>
 <br>
+
 
 <!-- Load d3.js & color scale-->
 <script src="https://d3js.org/d3.v4.js"></script>
@@ -499,20 +500,26 @@ d3v4.csv("types.csv", function(data) {
     .attr("transform", "translate(0," + height + ")")
     .call(d3v4.axisBottom(x).ticks(5))
 
-  // Add X axis label:
-  svg3.append("text")
-      .attr("text-anchor", "end")
-      .attr("x", width)
-      .attr("y", height+40 )
-      .text("Time (year)");
-
-  // Add Y axis label:
-  svg3.append("text")
-      .attr("text-anchor", "end")
-      .attr("x", -40)
-      .attr("y", -20 )
-      .text("# of consumers in millions")
-      .attr("text-anchor", "start")
+  
+      // Add the text label for the X axis
+    svg3.append("text") 
+        .attr("x", 300 )
+        .attr("y",  410 )
+        .style("font-size", "26px") 
+        .style("text-anchor", "middle")
+        .text("Year");
+    
+    // Add the text label for the Y axis
+    svg3.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 55 - margin.left)
+        .attr("x",30 - (height / 2))
+        .style("font-size", "26px") 
+        .attr("dy", "0.3em")
+        .style("text-anchor", "middle")
+        .text("Consumers (in millions)");
+  
+  
 
   // Add Y axis
   var y = d3v4.scaleLinear()
